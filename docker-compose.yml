@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  backend:
+      container_name: backend
+      ports:
+          - 8080:8080
+      image: backend
+      depends_on:
+          - chatbot
+      links:
+          - chatbot
+  backend2:
+      container_name: backend2
+      image: backend2
+      depends_on:
+          - backend
+          - chatbot
+      links:
+          - backend
+          - chatbot  
+  chatbot:
+      container_name: chatbot
+      ports:
+          - 8000:8000
+      image: chatbot
+      
+          
+          
+  
